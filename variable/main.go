@@ -31,10 +31,25 @@ func advance() {
 	fmt.Println(arr1, arr2, slice1, slice2, i, ok, map1)
 }
 
+func master() {
+	// master variable
+	type Person struct {
+		firstName string
+		lastName  string
+	}
+
+	var p Person = Person{"Danda", "Wong"}
+
+	fmt.Println(p)
+}
+
 func main() {
 	fmt.Println("--- basic ---")
 	basic()
 
 	fmt.Println("--- advance ---")
 	advance()
+
+	fmt.Println("--- master ---")
+	master()
 }
