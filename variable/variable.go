@@ -1,9 +1,11 @@
-package main
+package variable
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-func basic() {
-	// basic variable
+func variableBasic() {
 	var i int = 10               // int
 	var f float32 = 10.23        // float
 	var str string = "hello, go" // string
@@ -12,8 +14,7 @@ func basic() {
 	fmt.Println(i, f, str, c)
 }
 
-func advance() {
-	// advance variable
+func variableAdvance() {
 	var arr1 [3]int                   // array
 	arr1[0] = 1                       // set array value
 	var arr2 [3]int = [3]int{1, 2, 3} // array literal
@@ -31,25 +32,39 @@ func advance() {
 	fmt.Println(arr1, arr2, slice1, slice2, i, ok, map1)
 }
 
-func master() {
+func variableMaster() {
 	// master variable
-	type Person struct {
-		firstName string
+	type Person struct { // create struct type
+		firstName string // struct data
 		lastName  string
 	}
-
 	var p Person = Person{"Danda", "Wong"}
 
-	fmt.Println(p)
+	// function type
+	type Operator func(x float64) float64
+	// Map applies op to each element of a.
+	mapFunc := func(op Operator, a []float64) []float64 {
+		res := make([]float64, len(a))
+		for i, x := range a {
+			res[i] = op(x)
+		}
+		return res
+	}
+	op := math.Abs
+	a := []float64{1, -2}
+	b := mapFunc(op, a)
+
+	fmt.Println(p, a, b)
 }
 
-func main() {
+// RunVariable run the example
+func RunVariable() {
 	fmt.Println("--- basic ---")
-	basic()
+	variableBasic()
 
 	fmt.Println("--- advance ---")
-	advance()
+	variableAdvance()
 
 	fmt.Println("--- master ---")
-	master()
+	variableMaster()
 }

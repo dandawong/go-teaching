@@ -1,9 +1,7 @@
 package main
 
-import (
-	"fmt"
-)
+import "github.com/dandawong/go-teaching/variable"
 
 func main() {
-	fmt.Println("hello, world")
+	variable.RunArray()
 }
